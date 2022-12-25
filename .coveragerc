@@ -1,0 +1,10 @@
+[run]
+source=authentication/,tasks/,
+omit=
+    venv
+    */migrations/*
+    */tests/*
+    */__init__.py
+    tasks/views.py
+    tasks/admin.py
+    authentication/views.py
