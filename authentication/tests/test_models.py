@@ -1,4 +1,8 @@
 from rest_framework.test import APITestCase
+from django.conf import settings
+from django.utils import timezone
+from datetime import datetime, timedelta
+import jwt
 from authentication.models import User
 
 
@@ -35,4 +39,9 @@ class TestsModel(APITestCase):
 
     def test_response_token(self):
         user = User.objects.create_superuser('juan', 'juan@gmail.com', 'password')
-        self.assertEqual(user.token, '')
+        self.assertEqual(user.token,
+                         jwt.encode(
+                             {'username': 'juan', 'email': 'juan@gmail.com',
+                              'exp': datetime.utcnow() + timedelta(hours=24)},
+                             settings.SECRET_KEY, algorithm="HS256")
+                         )
