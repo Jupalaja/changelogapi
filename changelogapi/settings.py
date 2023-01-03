@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'authentication',
     'drf_yasg',
-    'drf_spectacular',
     'tasks',
     'django_filters',
 ]
