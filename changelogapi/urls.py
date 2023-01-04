@@ -32,6 +32,7 @@ schema_view = get_schema_view(
     authentication_classes=[],
     permission_classes=[permissions.AllowAny],
 )
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/auth/', include('authentication.urls')),
