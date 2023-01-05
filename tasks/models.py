@@ -8,7 +8,7 @@ class Task(TrackingModel):
     desc = models.CharField(max_length=255)
     is_completed = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
-    creator = models.ForeignKey(User, on_delete=models.CASCADE)
+    creator_id = models.ForeignKey(to=User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.creator
+        return self.title

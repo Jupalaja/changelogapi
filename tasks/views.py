@@ -15,11 +15,11 @@ class TasksAPIView(ListCreateAPIView):
                        filters.OrderingFilter,
                        filters.SearchFilter)
 
-    filterset_fields = ['id', 'title', 'desc', 'is_completed', 'created_at', 'creator']
-    search_fields = ['id', 'title', 'desc', 'is_completed', 'created_at']
+    filterset_fields = ['id', 'title', 'desc', 'is_completed', 'created_at', 'creator_id']
+    search_fields = ['id', 'title', 'desc', 'is_completed', 'created_at', 'creator_id']
 
     def perform_create(self, serializer):
-        serializer.save(creator=self.request.user)
+        serializer.save(creator_id=self.request.user)
 
     def get_queryset(self):
         return Task.objects.all()

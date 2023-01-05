@@ -5,8 +5,7 @@ from authentication.models import User
 
 
 class TaskSerializer(ModelSerializer):
-    creator = serializers.SlugRelatedField(slug_field='username', read_only=True)
-
     class Meta:
         model = Task
-        fields = ('title', 'desc', 'is_completed', 'created_at', 'creator',)
+        fields = ('id', 'title', 'desc', 'is_completed', 'created_at', 'creator_id',)
+        read_only_fields = ['creator_id']
